@@ -288,28 +288,43 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 
 <script>
 /* =========================================================
-   VIEW COUNTER — hitung diam-diam, tidak ditampilkan
+   VIEW COUNTER — FIXED VERSION (KERJA DI SEMUA DEVICE)
    ========================================================= */
 (function trackViews(){
   const KEY_TOTAL   = 'yz_views_total';
-  const KEY_TODAY   = 'yz_views_today';
-  const KEY_DATE    = 'yz_views_date';
-  const KEY_SESSION = 'yz_views_session';
   const KEY_VISITS  = 'yz_visit_count';
-  const today = new Date().toISOString().slice(0,10);
-  let total   = parseInt(localStorage.getItem(KEY_TOTAL)  || '0');
-  let todayV  = parseInt(localStorage.getItem(KEY_TODAY)  || '0');
-  let savedDate       = localStorage.getItem(KEY_DATE)    || '';
-  let sessionCounted  = sessionStorage.getItem(KEY_SESSION) === '1';
-  let visits  = parseInt(localStorage.getItem(KEY_VISITS) || '0');
-  if(savedDate !== today){ todayV=0; localStorage.setItem(KEY_DATE,today); }
-  if(!sessionCounted){
-    total++; todayV++; visits++;
-    localStorage.setItem(KEY_TOTAL,  total);
-    localStorage.setItem(KEY_TODAY,  todayV);
-    localStorage.setItem(KEY_VISITS, visits);
-    sessionStorage.setItem(KEY_SESSION,'1');
+  const KEY_LAST_VISIT = 'yz_last_visit';
+  const KEY_SESSION_START = 'yz_session_start_' + btoa(window.location.href); // Unique per page
+  const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 menit timeout
+  
+  const now = Date.now();
+  let total = parseInt(localStorage.getItem(KEY_TOTAL) || '0');
+  let visits = parseInt(localStorage.getItem(KEY_VISITS) || '0');
+  
+  // Cek apakah ini visit baru (timeout 30 menit)
+  const lastVisit = parseInt(localStorage.getItem(KEY_LAST_VISIT) || '0');
+  const isNewVisit = (now - lastVisit) > SESSION_TIMEOUT;
+  
+  if(isNewVisit) {
+    // New session → count as visit
+    visits++;
+    localStorage.setItem(KEY_VISITS, visits.toString());
+    localStorage.setItem(KEY_LAST_VISIT, now.toString());
   }
+  
+  // Selalu count view (setiap load halaman)
+  total++;
+  localStorage.setItem(KEY_TOTAL, total.toString());
+  
+  // Update daily views
+  const today = new Date().toISOString().slice(0,10);
+  const todayKey = 'yz_views_today_' + today;
+  const todayViews = parseInt(localStorage.getItem(todayKey) || '0') + 1;
+  localStorage.setItem(todayKey, todayViews.toString());
+  
+  // Simpan tanggal terakhir
+  localStorage.setItem('yz_views_date', today);
+  
 })();
 
 /* =========================================================
