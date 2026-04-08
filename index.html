@@ -20,11 +20,25 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 @keyframes orbFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,30px) scale(1.1)}}
 .wrap{position:relative;z-index:10;max-width:480px;margin:0 auto;padding:60px 16px 80px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .8s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== TOP BAR: waktu saja ===== */
+.top-bar{width:100%;display:flex;align-items:center;justify-content:center;margin-bottom:24px;animation:fadeUp .5s ease both}
+.clock-wrap{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:6px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.7);backdrop-filter:blur(10px)}
+.clock-dot{width:7px;height:7px;border-radius:50%;background:#1DB954;animation:dotPulse 1.5s ease-in-out infinite;flex-shrink:0}
+
+/* ===== AVATAR & PROFILE ===== */
 .avatar-ring{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));padding:3px;animation:ringPulse 3s ease-in-out infinite;margin-bottom:18px;flex-shrink:0}
 @keyframes ringPulse{0%,100%{box-shadow:0 0 20px rgba(168,85,247,.4),0 0 40px rgba(6,182,212,.2)}50%{box-shadow:0 0 40px rgba(168,85,247,.7),0 0 80px rgba(6,182,212,.4)}}
 .avatar-fallback{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#1e1030,#0a1a30);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;color:var(--c1);text-shadow:0 0 20px var(--c1);letter-spacing:-2px}
 .name{font-size:clamp(22px,6vw,28px);font-weight:700;letter-spacing:1px;background:linear-gradient(90deg,#fff 0%,var(--c1) 50%,var(--c2) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;text-align:center}
-.bio{font-size:clamp(12px,3.5vw,14px);color:rgba(255,255,255,.6);text-align:center;margin-bottom:28px;letter-spacing:.3px;padding:0 8px}
+.bio{font-size:clamp(12px,3.5vw,14px);color:rgba(255,255,255,.6);text-align:center;margin-bottom:10px;letter-spacing:.3px;padding:0 8px}
+
+/* ===== STATUS BADGE ===== */
+.status-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.25);border-radius:50px;padding:5px 14px;font-size:11px;font-weight:600;color:#1DB954;letter-spacing:.5px;margin-bottom:26px;cursor:default}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#1DB954;animation:dotPulse 1.2s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+/* ===== SOCIALS ===== */
 .socials{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap;justify-content:center}
 .soc-btn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden;flex-shrink:0}
 .soc-btn::before{content:'';position:absolute;inset:0;border-radius:50%;background:var(--hover-bg,rgba(255,255,255,.1));opacity:0;transition:opacity .25s}
@@ -38,7 +52,7 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 .soc-btn:hover[data-net="youtube"]{box-shadow:0 0 20px rgba(255,77,77,.4);border-color:#ff4d4d}
 .soc-btn:hover[data-net="instagram"]{box-shadow:0 0 20px rgba(225,48,108,.4);border-color:#e1306c}
 
-/* SPOTIFY */
+/* ===== SPOTIFY ===== */
 .sp-wrap{width:100%;margin-bottom:28px;animation:fadeUp .7s .2s ease both}
 .sp-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:12px;padding-left:4px}
 .sp-label i{color:var(--sp);font-size:13px}
@@ -57,7 +71,6 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 .sp-badge{display:none;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.5px;color:var(--sp);background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.25);border-radius:20px;padding:3px 9px;flex-shrink:0}
 .sp-badge.show{display:flex}
 .sp-dot{width:6px;height:6px;border-radius:50%;background:var(--sp);animation:dotPulse 1.2s ease-in-out infinite}
-@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 .sp-progress-wrap{padding:4px 18px 12px}
 .sp-time{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.35);margin-bottom:6px}
 .sp-bar-track{height:4px;background:rgba(255,255,255,.1);border-radius:10px;cursor:pointer;position:relative}
@@ -81,8 +94,6 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 .sp-playlist.open{max-height:260px;overflow-y:auto}
 .sp-playlist::-webkit-scrollbar{width:3px}
 .sp-playlist::-webkit-scrollbar-thumb{background:rgba(29,185,84,.3);border-radius:10px}
-
-/* FIX: sp-track-item pakai div + button:none, bukan <a> */
 .sp-track-item{display:flex;align-items:center;gap:12px;padding:8px 18px;cursor:pointer;transition:background .2s;background:none;border:none;width:100%;text-align:left;-webkit-tap-highlight-color:transparent}
 .sp-track-item:hover{background:rgba(255,255,255,.05)}
 .sp-track-item.active{background:rgba(29,185,84,.08)}
@@ -107,7 +118,7 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 .sp-open-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 18px 18px;padding:11px 18px;border-radius:50px;background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.3);color:var(--sp);font-size:13px;font-weight:600;text-decoration:none;transition:background .2s,box-shadow .2s,transform .2s;font-family:inherit;cursor:pointer}
 .sp-open-btn:hover{background:rgba(29,185,84,.2);box-shadow:0 0 24px rgba(29,185,84,.25);transform:translateY(-2px)}
 
-/* LINK BUTTONS */
+/* ===== LINK BUTTONS ===== */
 .links{width:100%;display:flex;flex-direction:column;gap:14px}
 .link-btn{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:50px;text-decoration:none;font-size:clamp(13px,3.5vw,15px);font-weight:600;color:#fff;position:relative;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .link-btn::before{content:'';position:absolute;inset:0;border-radius:50px;background:var(--btn-grad);opacity:0;transition:opacity .3s;z-index:0}
@@ -123,7 +134,24 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 .btn-label{position:relative;z-index:1;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .btn-arrow{position:relative;z-index:1;font-size:14px;color:rgba(255,255,255,.4);transition:color .3s,transform .3s;flex-shrink:0}
 .link-btn:hover .btn-arrow{color:rgba(255,255,255,.8);transform:translateX(4px)}
+
+/* ===== SHARE BUTTON ===== */
+.share-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 18px;border-radius:50px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;margin-top:6px;backdrop-filter:blur(10px)}
+.share-btn:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
+.share-btn i{font-size:14px}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(20,20,35,.95);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:10px 22px;font-size:13px;font-weight:600;color:#fff;backdrop-filter:blur(20px);z-index:9999;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== CONFETTI ===== */
+.confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:9998;animation:confettiFall 1.2s ease-in forwards}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0deg)}100%{opacity:0;transform:translateY(300px) rotate(720deg)}}
+
+/* ===== FOOTER ===== */
 .footer{margin-top:44px;font-size:12px;color:rgba(255,255,255,.25);text-align:center;letter-spacing:.5px}
+
+/* ===== ANIMATIONS ===== */
 .links .link-btn:nth-child(1){animation:fadeUp .6s .3s ease both}
 .links .link-btn:nth-child(2){animation:fadeUp .6s .45s ease both}
 .links .link-btn:nth-child(3){animation:fadeUp .6s .6s ease both}
@@ -133,7 +161,6 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 .socials .soc-btn:nth-child(2){animation-delay:.25s}
 .socials .soc-btn:nth-child(3){animation-delay:.35s}
 
-/* RESPONSIVE */
 @media(max-width:480px){
   .wrap{padding:40px 12px 60px}
   .sp-top{gap:10px;padding:14px 14px 12px}
@@ -160,21 +187,40 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
+<div class="toast" id="toast"></div>
 
 <main class="wrap">
 
+  <!-- TOP BAR: Jam -->
+  <div class="top-bar">
+    <div class="clock-wrap">
+      <span class="clock-dot"></span>
+      <span id="clockDisplay">00:00:00</span>
+      <span style="color:rgba(255,255,255,.35);font-size:10px;margin-left:2px">WIB</span>
+    </div>
+  </div>
+
+  <!-- Avatar -->
   <div class="avatar-ring">
     <div class="avatar-fallback">YZ</div>
   </div>
   <h1 class="name">Yohnzz</h1>
   <p class="bio">Thanks for supporting me ✨ | Gaming • Creator • Dev</p>
 
-  <div class="socials">
-    <a href="#" class="soc-btn" data-net="tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok soc-icon"></i></a>
-    <a href="https://www.youtube.com/@iwaknewton" class="soc-btn" data-net="youtube" aria-label="YouTube"><i class="fa-brands fa-youtube soc-icon"></i></a>
-    <a href="#" class="soc-btn" data-net="instagram" aria-label="Instagram"><i class="fa-brands fa-instagram soc-icon"></i></a>
+  <!-- Online Status Badge -->
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    Online & Active
   </div>
 
+  <!-- Socials -->
+  <div class="socials">
+    <a href="#" class="soc-btn" data-net="tiktok" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok soc-icon"></i></a>
+    <a href="https://www.youtube.com/@iwaknewton" class="soc-btn" data-net="youtube" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener"><i class="fa-brands fa-youtube soc-icon"></i></a>
+    <a href="#" class="soc-btn" data-net="instagram" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram soc-icon"></i></a>
+  </div>
+
+  <!-- Spotify Player -->
   <div class="sp-wrap">
     <div class="sp-label"><i class="fa-brands fa-spotify"></i> Now Playing</div>
     <div class="sp-card">
@@ -211,159 +257,175 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
         <span class="sp-pl-title"><i class="fa-solid fa-music" style="margin-right:6px;color:var(--sp)"></i>Playlist · <span id="plCount">0</span> lagu</span>
         <i class="fa-solid fa-chevron-down sp-pl-chevron" id="plChevron"></i>
       </div>
-      <!-- FIX: Playlist container, item diisi JS pakai <button> bukan <a href> -->
       <div class="sp-playlist" id="spPlaylist" role="list"></div>
 
       <a href="https://open.spotify.com/playlist/0HLQCnbrPOxl9Ml8H2RQjy?si=00806458ec4c41b1" target="_blank" rel="noopener noreferrer" class="sp-open-btn">
         <i class="fa-brands fa-spotify" style="font-size:16px"></i> Buka Playlist di Spotify
       </a>
-
     </div>
   </div>
 
+  <!-- Link Buttons -->
   <div class="links">
-    <a href="https://saweria.co/iwaknewton" class="link-btn" data-id="donate"><div class="btn-icon">💖</div><span class="btn-label">Donasi / Support Saya</span><span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span></a>
-    <!-- <a href="https://iwaknewton.github.io" class="link-btn" data-id="web"><div class="btn-icon">🌐</div><span class="btn-label">Website Saya</span><span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span></a> -->
-    <a href="https://discord.gg/tegT3Cva2j" class="link-btn" data-id="discord"><div class="btn-icon">🎮</div><span class="btn-label">Discord Marga Arkananta</span><span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span></a>
-    <a href="https://github.com/yourgithubprofile" class="link-btn" data-id="project"><div class="btn-icon">🔥</div><span class="btn-label">Project / Komunitas</span><span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span></a>
+    <a href="https://saweria.co/iwaknewton" class="link-btn" data-id="donate" onclick="handleDonate(event)">
+      <div class="btn-icon">💖</div><span class="btn-label">Donasi / Support Saya</span><span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+    </a>
+    <a href="https://discord.gg/tegT3Cva2j" class="link-btn" data-id="discord" target="_blank" rel="noopener">
+      <div class="btn-icon">🎮</div><span class="btn-label">Discord Marga Arkananta</span><span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+    </a>
+    <a href="https://github.com/yourgithubprofile" class="link-btn" data-id="project" target="_blank" rel="noopener">
+      <div class="btn-icon">🔥</div><span class="btn-label">Project / Komunitas</span><span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+    </a>
   </div>
+
+  <!-- Share Button -->
+  <button class="share-btn" onclick="shareProfile()" style="margin-top:16px">
+    <i class="fa-solid fa-share-nodes"></i> Bagikan Profil Ini
+  </button>
 
   <p class="footer">© 2025 Yohnzz · Made with 💜</p>
 </main>
 
 <script>
-const audio = new Audio();
+/* =========================================================
+   VIEW COUNTER — hitung diam-diam, tidak ditampilkan
+   ========================================================= */
+(function trackViews(){
+  const KEY_TOTAL   = 'yz_views_total';
+  const KEY_TODAY   = 'yz_views_today';
+  const KEY_DATE    = 'yz_views_date';
+  const KEY_SESSION = 'yz_views_session';
+  const KEY_VISITS  = 'yz_visit_count';
+  const today = new Date().toISOString().slice(0,10);
+  let total   = parseInt(localStorage.getItem(KEY_TOTAL)  || '0');
+  let todayV  = parseInt(localStorage.getItem(KEY_TODAY)  || '0');
+  let savedDate       = localStorage.getItem(KEY_DATE)    || '';
+  let sessionCounted  = sessionStorage.getItem(KEY_SESSION) === '1';
+  let visits  = parseInt(localStorage.getItem(KEY_VISITS) || '0');
+  if(savedDate !== today){ todayV=0; localStorage.setItem(KEY_DATE,today); }
+  if(!sessionCounted){
+    total++; todayV++; visits++;
+    localStorage.setItem(KEY_TOTAL,  total);
+    localStorage.setItem(KEY_TODAY,  todayV);
+    localStorage.setItem(KEY_VISITS, visits);
+    sessionStorage.setItem(KEY_SESSION,'1');
+  }
+})();
 
+/* =========================================================
+   LIVE CLOCK — WIB (UTC+7)
+   ========================================================= */
+function updateClock(){
+  const now = new Date();
+  const wib = new Date(now.getTime() + 7*3600*1000);
+  const h = String(wib.getUTCHours()).padStart(2,'0');
+  const m = String(wib.getUTCMinutes()).padStart(2,'0');
+  const s = String(wib.getUTCSeconds()).padStart(2,'0');
+  const el = document.getElementById('clockDisplay');
+  if(el) el.textContent = h+':'+m+':'+s;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+let toastTimer;
+function showToast(msg, icon=''){
+  const t = document.getElementById('toast');
+  t.textContent = (icon?icon+' ':'')+msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+
+/* =========================================================
+   CONFETTI
+   ========================================================= */
+function spawnConfetti(x, y){
+  const colors = ['#a855f7','#06b6d4','#f43f5e','#1DB954','#f59e0b','#ffffff'];
+  for(let i=0;i<28;i++){
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `left:${x+(Math.random()-.5)*120}px;top:${y-20}px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;transform:rotate(${Math.random()*360}deg);animation-duration:${.8+Math.random()*.8}s;animation-delay:${Math.random()*.3}s;border-radius:${Math.random()>.5?'50%':'2px'};`;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(), 1600);
+  }
+}
+function handleDonate(e){
+  const rect = e.currentTarget.getBoundingClientRect();
+  spawnConfetti(rect.left+rect.width/2, rect.top);
+  showToast('Makasih banyak! 💖 Kamu luar biasa!');
+}
+
+/* =========================================================
+   SHARE PROFILE
+   ========================================================= */
+function shareProfile(){
+  const url  = window.location.href;
+  const text = 'Cek biolink Yohnzz! 🎮🔥';
+  if(navigator.share){ navigator.share({title:'Yohnzz',text,url}).catch(()=>{}); }
+  else { navigator.clipboard.writeText(url).then(()=>{ showToast('Link disalin ke clipboard!','📋'); }).catch(()=>showToast('Salin link: '+url)); }
+}
+
+/* =========================================================
+   SPOTIFY PLAYER
+   ========================================================= */
+const audio = new Audio();
 const TRACKS = [
   { name:'Nina', artist:'.Feast', src:'asset/music/Nina.mp3', emoji:'🎧', color:'#a855f7,#06b6d4' },
   { name:'Ada Titik-Titik Di Ujung Doa', artist:'Sal Priadi', src:'asset/music/Doa.mp3', emoji:'🙏', color:'#10b981,#3b82f6' },
   { name:'Komang', artist:'Raim Laode', src:'asset/music/Komang.mp3', emoji:'🌅', color:'#f59e0b,#ef4444' },
   { name:'Sesuatu Di Jogja', artist:'Adhitia Sofyan', src:'asset/music/Sesuatu.mp3', emoji:'☕', color:'#78350f,#d97706' }
 ];
-
-let curIdx = 0, playing = false, shuffled = false, repeat = false, plOpen = false;
-
-const fmt = s => { s = Math.floor(s||0); return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; };
-
-function loadTrack(idx) {
-  curIdx = idx;
-  const t = TRACKS[idx];
-  audio.src = t.src;
-  audio.load();
-  document.getElementById('trackName').textContent = t.name;
-  document.getElementById('trackArtist').textContent = t.artist;
-  const artEmoji = document.getElementById('artEmoji');
-  artEmoji.textContent = t.emoji;
-  artEmoji.style.background = `linear-gradient(135deg,${t.color})`;
-  document.getElementById('artWrap').style.background = `linear-gradient(135deg,${t.color})`;
-  document.getElementById('timeCur').textContent = '0:00';
-  document.getElementById('barFill').style.width = '0%';
+let curIdx=0,playing=false,shuffled=false,repeat=false,plOpen=false;
+const fmt = s=>{s=Math.floor(s||0);return`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`};
+function loadTrack(idx){
+  curIdx=idx;const t=TRACKS[idx];
+  audio.src=t.src;audio.load();
+  document.getElementById('trackName').textContent=t.name;
+  document.getElementById('trackArtist').textContent=t.artist;
+  const ae=document.getElementById('artEmoji');ae.textContent=t.emoji;
+  ae.style.background=`linear-gradient(135deg,${t.color})`;
+  document.getElementById('artWrap').style.background=`linear-gradient(135deg,${t.color})`;
+  document.getElementById('timeCur').textContent='0:00';
+  document.getElementById('barFill').style.width='0%';
   buildPL();
 }
-
-audio.addEventListener('loadedmetadata', () => {
-  document.getElementById('timeTot').textContent = fmt(audio.duration);
-  buildPL();
+audio.addEventListener('loadedmetadata',()=>{document.getElementById('timeTot').textContent=fmt(audio.duration);buildPL();});
+audio.addEventListener('timeupdate',()=>{
+  document.getElementById('timeCur').textContent=fmt(audio.currentTime);
+  if(audio.duration)document.getElementById('barFill').style.width=(audio.currentTime/audio.duration*100)+'%';
 });
-
-audio.addEventListener('timeupdate', () => {
-  document.getElementById('timeCur').textContent = fmt(audio.currentTime);
-  if (audio.duration) {
-    document.getElementById('barFill').style.width = (audio.currentTime / audio.duration * 100) + '%';
-  }
-});
-
-audio.addEventListener('ended', () => {
-  if (repeat) { audio.currentTime = 0; audio.play(); }
-  else { nextTrack(); }
-});
-
-function setPlayState(isPlaying) {
-  playing = isPlaying;
-  document.getElementById('playIcon').className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-  document.getElementById('spBadge').classList.toggle('show', isPlaying);
-  document.getElementById('artWrap').classList.toggle('playing', isPlaying);
-  buildPL();
-}
-
-function togglePlay() {
-  if (playing) { audio.pause(); setPlayState(false); }
-  else { audio.play().catch(()=>{}); setPlayState(true); }
-}
-
-// FIX UTAMA: selectTrack pakai JS murni, tidak ada href ke file audio
-function selectTrack(idx) {
-  loadTrack(idx);
-  audio.play().catch(()=>{});
-  setPlayState(true);
-}
-
-function nextTrack() {
-  const next = shuffled ? Math.floor(Math.random() * TRACKS.length) : (curIdx + 1) % TRACKS.length;
-  selectTrack(next);
-}
-
-function prevTrack() {
-  selectTrack((curIdx - 1 + TRACKS.length) % TRACKS.length);
-}
-
-function toggleShuffle() {
-  shuffled = !shuffled;
-  document.getElementById('shuffleBtn').classList.toggle('active', shuffled);
-}
-
-function toggleRepeat() {
-  repeat = !repeat;
-  document.getElementById('repeatBtn').classList.toggle('active', repeat);
-}
-
-// FIX UTAMA: buildPL pakai <button type="button">, BUKAN <a href="...mp3">
-// Tidak ada download, tidak ada link ke file audio
-function buildPL() {
-  const pl = document.getElementById('spPlaylist');
-  document.getElementById('plCount').textContent = TRACKS.length;
-  pl.innerHTML = TRACKS.map((t, i) => {
-    const isActive = i === curIdx;
-    const numCell = isActive && playing
-      ? '<div class="sp-eq"><span></span><span></span><span></span><span></span></div>'
-      : String(i + 1);
-    return `<button
-      type="button"
-      class="sp-track-item${isActive ? ' active' : ''}"
-      onclick="selectTrack(${i})"
-      aria-label="Putar ${t.name} oleh ${t.artist}"
-      role="listitem"
-    >
+audio.addEventListener('ended',()=>{if(repeat){audio.currentTime=0;audio.play();}else{nextTrack();}});
+function setPlayState(p){playing=p;document.getElementById('playIcon').className=p?'fa-solid fa-pause':'fa-solid fa-play';document.getElementById('spBadge').classList.toggle('show',p);document.getElementById('artWrap').classList.toggle('playing',p);buildPL();}
+function togglePlay(){if(playing){audio.pause();setPlayState(false);}else{audio.play().catch(()=>{});setPlayState(true);}}
+function selectTrack(idx){loadTrack(idx);audio.play().catch(()=>{});setPlayState(true);}
+function nextTrack(){const n=shuffled?Math.floor(Math.random()*TRACKS.length):(curIdx+1)%TRACKS.length;selectTrack(n);}
+function prevTrack(){selectTrack((curIdx-1+TRACKS.length)%TRACKS.length);}
+function toggleShuffle(){shuffled=!shuffled;document.getElementById('shuffleBtn').classList.toggle('active',shuffled);}
+function toggleRepeat(){repeat=!repeat;document.getElementById('repeatBtn').classList.toggle('active',repeat);}
+function buildPL(){
+  const pl=document.getElementById('spPlaylist');
+  document.getElementById('plCount').textContent=TRACKS.length;
+  pl.innerHTML=TRACKS.map((t,i)=>{
+    const isActive=i===curIdx;
+    const numCell=isActive&&playing?'<div class="sp-eq"><span></span><span></span><span></span><span></span></div>':String(i+1);
+    return`<button type="button" class="sp-track-item${isActive?' active':''}" onclick="selectTrack(${i})" aria-label="Putar ${t.name}" role="listitem">
       <div class="sp-ti-num">${numCell}</div>
       <div class="sp-ti-emoji" style="background:linear-gradient(135deg,${t.color})">${t.emoji}</div>
-      <div class="sp-ti-info">
-        <div class="sp-ti-name">${t.name}</div>
-        <div class="sp-ti-artist">${t.artist}</div>
-      </div>
+      <div class="sp-ti-info"><div class="sp-ti-name">${t.name}</div><div class="sp-ti-artist">${t.artist}</div></div>
       <div class="sp-ti-dur">${fmt(audio.duration)}</div>
     </button>`;
   }).join('');
 }
-
-// Seek bar — cegah default dan pastikan hanya update waktu
-document.getElementById('barTrack').addEventListener('click', function(e) {
-  e.preventDefault();
-  const rect = this.getBoundingClientRect();
-  const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / this.offsetWidth));
-  if (audio.duration) audio.currentTime = pct * audio.duration;
+document.getElementById('barTrack').addEventListener('click',function(e){
+  e.preventDefault();const r=this.getBoundingClientRect();
+  const p=Math.max(0,Math.min(1,(e.clientX-r.left)/this.offsetWidth));
+  if(audio.duration)audio.currentTime=p*audio.duration;
 });
-
-function togglePlaylist() {
-  plOpen = !plOpen;
-  document.getElementById('spPlaylist').classList.toggle('open', plOpen);
-  document.getElementById('plChevron').classList.toggle('open', plOpen);
-}
-
-// Support keyboard untuk playlist header
-document.querySelector('.sp-pl-header').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePlaylist(); }
-});
-
+function togglePlaylist(){plOpen=!plOpen;document.getElementById('spPlaylist').classList.toggle('open',plOpen);document.getElementById('plChevron').classList.toggle('open',plOpen);}
+document.querySelector('.sp-pl-header').addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();togglePlaylist();}});
 loadTrack(0);
 </script>
 </body>
