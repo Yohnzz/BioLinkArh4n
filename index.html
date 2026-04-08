@@ -27,7 +27,7 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
 .clock-dot{width:7px;height:7px;border-radius:50%;background:#1DB954;animation:dotPulse 1.5s ease-in-out infinite;flex-shrink:0}
 
 /* ===== AVATAR & PROFILE ===== */
-.avatar-ring{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));padding:3px;animation:ringPulse 3s ease-in-out infinite;margin-bottom:18px;flex-shrink:0}
+.avatar-ring{width:132px;height:132px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));padding:3px;animation:ringPulse 3s ease-in-out infinite;margin-bottom:18px;flex-shrink:0}
 @keyframes ringPulse{0%,100%{box-shadow:0 0 20px rgba(168,85,247,.4),0 0 40px rgba(6,182,212,.2)}50%{box-shadow:0 0 40px rgba(168,85,247,.7),0 0 80px rgba(6,182,212,.4)}}
 .avatar-fallback{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#1e1030,#0a1a30);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;color:var(--c1);text-shadow:0 0 20px var(--c1);letter-spacing:-2px}
 /* ===== AVATAR CUSTOM IMAGE ===== */
@@ -45,6 +45,8 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
   display:flex;align-items:center;justify-content:center;
   font-size:40px;font-weight:700;color:var(--c1);text-shadow:0 0 20px var(--c1);
   letter-spacing:-2px;background:linear-gradient(135deg,#1e1030,#0a1a30);
+  opacity:0;
+  pointer-events:none;
   transition:opacity .4s ease;
 }
 .avatar-logo.error{
@@ -242,7 +244,7 @@ body{font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;backgro
   .sp-badge{display:none!important}
 }
 @media(max-width:360px){
-  .avatar-ring{width:90px;height:90px}
+  .avatar-ring{width:108px;height:108px}
   .avatar-fallback{font-size:32px}
   .sp-art-wrap{width:44px;height:44px}
   .art-inner{font-size:20px}
