@@ -488,10 +488,97 @@ window.addEventListener('load', function(){
     img.classList.add('error');
   }
 });
+const viewStore = (() => {
+  const memoryStore = {};
+  function canUseLocalStorage(){
+    try{
+      const testKey = '__yz_test__';
+      localStorage.setItem(testKey, '1');
+      localStorage.removeItem(testKey);
+      return true;
+    }catch(_){
+      return false;
+    }
+  }
+  const hasLocalStorage = canUseLocalStorage();
+  function getCookie(name){
+    const safeName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const match = document.cookie.match(new RegExp('(?:^|; )' + safeName + '=([^;]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+  function setCookie(name, value){
+    document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=31536000; samesite=lax`;
+  }
+  return {
+    get(key){
+      if(hasLocalStorage){
+        try{return localStorage.getItem(key);}catch(_){}
+      }
+      return getCookie(key) ?? memoryStore[key] ?? null;
+    },
+    set(key, value){
+      if(hasLocalStorage){
+        try{
+          localStorage.setItem(key, value);
+          return;
+        }catch(_){}
+      }
+      setCookie(key, value);
+      memoryStore[key] = value;
+    }
+  };
+})();
+function getWibDateKey(){
+  const now = new Date();
+  const wib = new Date(now.getTime() + 7 * 60 * 60 * 1000);
+  return wib.toISOString().slice(0,10);
+}
+function runViewCounterMobileSafe(source='load'){
+  const KEY_TOTAL = 'yz_views_total';
+  const KEY_VISITS = 'yz_visit_count';
+  const KEY_LAST_VISIT = 'yz_last_visit';
+  const KEY_PAGE_SEEN = 'yz_page_seen_' + btoa(location.pathname + '|' + source);
+  const SESSION_TIMEOUT = 30 * 60 * 1000;
+  const now = Date.now();
+
+  if(source === 'pageshow'){
+    try{
+      if(sessionStorage.getItem(KEY_PAGE_SEEN)) return;
+      sessionStorage.setItem(KEY_PAGE_SEEN, String(now));
+    }catch(_){}
+  }
+
+  let total = parseInt(viewStore.get(KEY_TOTAL) || '0', 10);
+  let visits = parseInt(viewStore.get(KEY_VISITS) || '0', 10);
+  const lastVisit = parseInt(viewStore.get(KEY_LAST_VISIT) || '0', 10);
+  const isNewVisit = !lastVisit || (now - lastVisit) > SESSION_TIMEOUT;
+
+  total++;
+  viewStore.set(KEY_TOTAL, String(total));
+
+  if(isNewVisit){
+    visits++;
+    viewStore.set(KEY_VISITS, String(visits));
+    viewStore.set(KEY_LAST_VISIT, String(now));
+  }
+
+  const today = getWibDateKey();
+  const todayKey = 'yz_views_today_' + today;
+  const todayViews = parseInt(viewStore.get(todayKey) || '0', 10) + 1;
+  viewStore.set(todayKey, String(todayViews));
+  viewStore.set('yz_views_date', today);
+}
+runViewCounterMobileSafe();
+window.addEventListener('pageshow', function(e){
+  if(e.persisted){
+    runViewCounterMobileSafe('pageshow');
+  }
+});
 /* =========================================================
    VIEW COUNTER — FIXED VERSION (KERJA DI SEMUA DEVICE)
    ========================================================= */
 (function trackViews(){
+  return;
   const KEY_TOTAL   = 'yz_views_total';
   const KEY_VISITS  = 'yz_visit_count';
   const KEY_LAST_VISIT = 'yz_last_visit';
